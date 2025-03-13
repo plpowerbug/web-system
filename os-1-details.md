@@ -594,6 +594,453 @@ Web 服务器（如 Apache、Nginx、IIS）用于**接收和处理浏览器的�
 
 🔹 **不同的操作系统满足不同的计算需求，选择合适的 OS 是关键！**
 
+## **12**
+这张幻灯片的标题是 **“Operating Systems”**（操作系统），它展示了 **操作系统的架构**，使用**洋葱模型（onion model）**的概念，分为四个层次。以下是详细解析：
+
+---
+
+## **1. 什么是操作系统架构？**
+操作系统（OS）是一个复杂的软件系统，它由多个层次组成，每个层次都有特定的功能。  
+本幻灯片使用 **洋葱模型**（onion model）来描述 **操作系统的四层结构**，从内到外依次是：
+1. **硬件层（Hardware Layer）**
+2. **内核（Kernel）**
+3. **Shell（命令解释层）**
+4. **应用层（Applications）**
+
+---
+
+## **2. 操作系统的四层结构**
+### **🔹 1. 硬件层（Hardware Layer）**
+📌 **负责提供计算资源，如 CPU、内存、硬盘、I/O 设备**  
+- 计算机的物理部分，包括：
+  - **CPU（中央处理器）**：执行计算和指令  
+  - **RAM（内存）**：存储正在运行的程序和数据  
+  - **硬盘/SSD**：长期存储数据  
+  - **输入/输出设备**（鼠标、键盘、显示器、网络接口等）
+
+📝 **作用**
+- 提供计算能力，但本身无法直接运行程序，需要 OS 进行管理。
+
+---
+
+### **🔹 2. 内核（Kernel）**
+📌 **操作系统的核心，直接控制硬件，管理系统资源**  
+- **内核是 OS 最重要的部分**，它负责：
+  - **进程管理**（运行多个应用程序）
+  - **内存管理**（分配 RAM 资源）
+  - **设备管理**（控制硬件，如磁盘、网络）
+  - **文件系统管理**（读写文件）
+  - **安全性**（用户权限管理）
+
+📝 **内核的作用**
+- 作为 **硬件和软件的接口**，控制所有系统操作。
+- 例如，当你打开一个应用程序，**内核会把它加载到 RAM 并分配 CPU 资源**。
+
+---
+
+### **🔹 3. Shell（命令解释层）**
+📌 **用户与内核交互的接口**  
+- **Shell 是用户与计算机交互的桥梁**，可以是：
+  - **CLI（命令行界面）**：如 Bash、Zsh、PowerShell
+  - **GUI（图形用户界面）**：如 Windows 资源管理器、macOS Finder
+
+📝 **Shell 的作用**
+- **CLI 示例**：
+  ```bash
+  ls -l  # 列出当前目录文件
+  cd /home  # 切换目录
+  ```
+- **GUI 示例**：
+  - 通过 **文件管理器** 打开文件
+  - 使用 **系统设置** 更改网络连接
+
+---
+
+### **🔹 4. 应用层（Applications）**
+📌 **用户使用的所有软件，如浏览器、文本编辑器、游戏等**  
+- **应用程序运行在 Shell 之上，并通过系统调用（System Calls）访问内核功能**。
+- 常见应用：
+  - **浏览器**（Chrome、Firefox）
+  - **开发工具**（VS Code、IntelliJ）
+  - **办公软件**（Microsoft Office、Google Docs）
+
+📝 **示例**
+- 当你打开 Chrome 浏览器：
+  1. **应用层** → 你点击 Chrome 图标
+  2. **Shell 层** → 解释你的操作，向内核发送指令
+  3. **内核层** → 分配 CPU 和 RAM 资源
+  4. **硬件层** → 显示网页内容
+
+---
+
+## **3. 右侧图示解析**
+图中使用了 **同心圆结构**（onion model）：
+- **最内层**（蓝色）是 **硬件（Hardware）** → 物理设备
+- **第二层** 是 **内核（Kernel）** → 控制硬件
+- **第三层** 是 **Shell** → 提供用户交互
+- **最外层** 是 **应用层（Applications）** → 运行软件
+
+这种 **从内到外的层级架构** 确保了 **系统的安全性、稳定性和可扩展性**。
+
+---
+
+## **4. 总结**
+1. **操作系统由四个层次组成**：
+   - **硬件层** → 计算资源
+   - **内核** → 资源管理（最核心部分）
+   - **Shell** → 用户与系统的交互界面
+   - **应用层** → 运行用户程序
+2. **内核是 OS 的核心**，它控制所有系统功能。
+3. **Shell 提供了用户交互接口**，可以是命令行（CLI）或图形界面（GUI）。
+4. **应用程序依赖内核和 Shell 运行**，最终通过硬件执行计算任务。
+
+🔹 **理解操作系统架构有助于更好地管理和优化计算机系统！**
+## **14 内核**
+这张幻灯片的标题是 **“Operating Systems”**（操作系统），它主要讲解了 **内核（Kernel）** 作为操作系统核心的功能和作用。以下是详细解析：
+
+---
+
+## **1. 什么是内核（Kernel）？**
+**内核是操作系统的核心组件**，它直接管理计算机硬件，并提供资源给应用程序。内核位于 **操作系统架构的底层**，是用户程序和硬件之间的桥梁。
+
+在 **计算机启动时**，内核是 **第一个被加载的程序**（在引导加载程序 bootloader 之后）。它必须保证系统的稳定性和安全性，同时高效地管理资源。
+
+---
+
+## **2. 内核的主要功能**
+### **🔹 1. 内核直接控制硬件**
+📌 **"Kernel controls the hardware directly (through drivers, firmware)"**  
+- **内核与硬件直接交互**，通过 **驱动程序（drivers）和固件（firmware）** 控制：
+  - **CPU（中央处理器）**：执行进程
+  - **内存（RAM）**：管理应用程序使用的内存
+  - **存储设备（硬盘、SSD）**：管理文件系统和数据存储
+  - **输入/输出设备（键盘、鼠标、显示器、网络适配器）**
+
+📝 **示例**
+- 当你按下 **键盘按键**，键盘驱动程序将信号发送给内核，内核再通知应用程序（如文本编辑器）。
+
+---
+
+### **🔹 2. 内核负责资源管理**
+📌 **"Kernel is responsible for disk management, task scheduling, memory management, access to resources"**  
+- **磁盘管理（Disk Management）** → 处理文件系统、数据存储（如 NTFS、ext4）。  
+- **任务调度（Task Scheduling）** → 管理多个进程的执行顺序，决定 **哪个进程使用 CPU**。  
+- **内存管理（Memory Management）** → 分配和释放 RAM，防止内存泄漏。  
+- **资源访问控制（Access to Resources）** → 确保不同进程不会相互干扰，提高系统安全性。  
+
+📝 **示例**
+- 当你同时运行 **浏览器、音乐播放器和 VS Code**，内核负责分配 CPU 和内存，使它们平稳运行。
+
+---
+
+### **🔹 3. 内核是计算机启动时加载的第一个程序**
+📌 **"Kernel is the first program loaded on start-up (after bootloader)"**  
+- **计算机启动过程**：
+  1. **BIOS/UEFI 启动**，加载 **Bootloader（引导加载程序）**。
+  2. **Bootloader 读取内核，并将其加载到内存中**。
+  3. **内核初始化系统资源**（如 CPU、内存、文件系统）。
+  4. **内核启动用户进程**，加载 GUI（图形界面）或 Shell（命令行界面）。
+
+📝 **示例**
+- 在 **Linux 系统** 中，GRUB（引导程序）加载 **Linux Kernel**，然后启动 `init` 进程，最终进入桌面环境。
+
+---
+
+### **🔹 4. 内核代码被隔离在内存的保护区域**
+📌 **"Kernel code is loaded in isolated area of the memory to protect it from access by other applications"**  
+- **内核代码通常运行在“内核空间（Kernel Space）”**，普通应用程序运行在**用户空间（User Space）**。  
+- **用户程序无法直接访问内核**，避免程序崩溃时影响整个系统。
+
+📝 **示例**
+- 在 Linux 系统中，普通用户程序无法直接访问 `/dev/mem`（物理内存设备），除非有 root 权限。
+
+---
+
+### **🔹 5. 内核向应用程序提供系统资源**
+📌 **"Kernel provides resources to other applications (such as CPU, Memory, I/O, storage, etc …)"**  
+- **应用程序不能直接访问硬件**，它们必须通过 **系统调用（System Calls）** 请求内核提供资源。  
+- **系统调用（如 `read()`、`write()`、`open()`）允许程序访问文件、内存和网络。**
+
+📝 **示例**
+- 当你打开一个 **MP4 视频**：
+  1. **播放器应用** 请求内核访问文件系统（`open()`）。
+  2. **内核读取视频数据**，并将其提供给播放器。
+  3. **内核管理 CPU 和 GPU** 资源，确保视频播放流畅。
+
+---
+
+## **3. 总结**
+1. **内核是操作系统的核心**，负责管理 **硬件、进程、内存、文件系统** 等资源。
+2. **内核直接与硬件交互**，但应用程序不能直接访问内核，必须通过 **系统调用** 请求资源。
+3. **内核在计算机启动时加载，并运行在受保护的内存区域**，防止恶意软件攻击。
+4. **应用程序依赖内核提供 CPU、内存、I/O 设备、文件系统等资源**，实现稳定运行。
+
+🔹 **理解内核的作用，有助于优化系统性能、提高安全性，并掌握 Linux/Unix 系统管理技巧！**
+
+## **16**
+这张幻灯片的标题是 **“Operating Systems”**（操作系统），它介绍了 **应用层（Applications Layer）**，即操作系统的最上层，负责运行软件、工具和服务。以下是详细解析：
+
+---
+
+## **1. 什么是应用层（Applications Layer）？**
+**应用层是操作系统的最上层**，用于运行各种软件、实用工具和服务，供用户直接使用。  
+应用程序（Applications）依赖 **Shell** 与用户交互，并通过 **内核（Kernel）** 访问计算机硬件。
+
+---
+
+## **2. 应用层的主要特性**
+### **🔹 1. 操作系统自带的软件**
+📌 **"Applications are software included in the OS installation"**  
+- 操作系统安装时会默认提供一些 **内置软件**，例如：
+  - **Windows** → 记事本（Notepad）、计算器（Calculator）、文件管理器（File Explorer）
+  - **Linux** → 终端（Terminal）、文本编辑器（Nano、Vim）、文件管理器（Nautilus）
+  - **macOS** → Safari 浏览器、预览（Preview）、终端（Terminal）
+
+📝 **示例**
+- 安装 **Ubuntu** 时，默认自带 **Firefox** 浏览器和 LibreOffice 办公软件。
+
+---
+
+### **🔹 2. 用户安装的软件**
+📌 **"Applications are software installed by the users"**  
+- 用户可以安装**额外的软件**，以满足特定需求，例如：
+  - **浏览器**（Google Chrome、Mozilla Firefox）
+  - **办公软件**（Microsoft Office、Google Docs）
+  - **开发工具**（Visual Studio Code、PyCharm）
+  - **游戏**（Steam、Minecraft）
+
+📝 **示例**
+- 在 **Linux** 上，你可以使用 `apt install vlc` 安装 VLC 播放器。
+
+---
+
+### **🔹 3. 应用程序通过内核访问硬件**
+📌 **"Applications communicate with hardware through Kernel"**  
+- **应用程序不能直接访问硬件**，必须通过**内核（Kernel）**来请求资源，如：
+  - **读取文件**（磁盘存储）
+  - **网络连接**（Wi-Fi / 以太网）
+  - **打印文件**（访问打印机）
+  - **播放音乐**（控制音频设备）
+
+📝 **示例**
+- 当你打开 **Spotify** 听歌：
+  1. Spotify（应用程序）请求访问音频设备。
+  2. **Shell 处理请求**，并通过 **系统调用（System Call）** 传递给 **内核**。
+  3. **内核控制音频硬件**，播放音乐。
+
+---
+
+### **🔹 4. 应用程序通过 Shell 与用户交互**
+📌 **"Applications interact with users through the Shell"**  
+- Shell 是**用户和内核之间的接口**，应用程序可以通过：
+  - **CLI（命令行界面）** → 例如 `vim` 编辑器
+  - **GUI（图形用户界面）** → 例如 **VS Code、Chrome**
+
+📝 **示例**
+- 运行 `nano myfile.txt` → Nano 编辑器通过 Shell 运行，并请求 **内核** 访问文件。
+
+---
+
+### **🔹 5. 应用程序提供 GUI（图形用户界面）**
+📌 **"Applications provide GUI (Graphical User Interface) software that enables user-friendly interaction with the Shell."**  
+- **GUI（图形用户界面）** 让用户无需使用命令行，而是通过鼠标、窗口和菜单与计算机交互。
+- **CLI（命令行界面）** 适用于高级用户，如开发者和系统管理员。
+
+📝 **示例**
+- Windows 的 **资源管理器（File Explorer）** 提供 GUI 访问文件，而 Linux 用户可以使用 `ls` 命令在终端中查看文件。
+
+---
+
+## **3. 总结**
+1. **应用层是操作系统最上层**，它运行用户使用的软件和工具。
+2. **操作系统自带应用**（如文本编辑器、文件管理器），用户也可以**安装额外的软件**（如 Chrome、VS Code）。
+3. **应用程序不能直接访问硬件**，必须通过 **Shell** 交互，并通过 **内核** 访问系统资源。
+4. **应用层支持 GUI 和 CLI**，让用户可以选择最适合的交互方式。
+
+🔹 **理解应用层的作用，可以帮助我们更高效地使用计算机，并优化软件的运行环境！**
+
+## **18**
+这张幻灯片的标题是 **“GUI vs CLI”**，它比较了 **CLI（命令行界面）** 和 **GUI（图形用户界面）**，说明了两者如何通过 Shell 访问操作系统的 **内核（Kernel）**，并与计算机交互。以下是详细解析：
+
+---
+
+## **1. GUI 和 CLI 的核心区别**
+📌 **“Interfaces like CLI and GUI access and use the hardware through Kernel and interact with users through Shell.”**  
+👉 **CLI 和 GUI 都通过 Shell 访问 Kernel，从而使用计算机资源。**  
+👉 **它们的主要区别是：用户如何与计算机交互**（命令 vs 图形界面）。
+
+---
+
+## **2. 什么是 CLI（命令行界面）？**
+📌 **"Provides Shell commands to users to interact with the Kernel to use/access resources."**  
+👉 CLI 通过 **Shell 命令** 让用户操作计算机，需要用户输入文本指令。
+
+✅ **特点：**
+- 需要用户输入命令，**手动执行任务**。
+- 适用于**开发人员、系统管理员**，操作更灵活，但学习成本较高。
+- **运行速度快**，适合**自动化和批量操作**。
+- 主要用于 **Linux、Unix、Windows PowerShell**。
+
+---
+
+### **🔹 CLI 示例**
+📌 **创建目录、进入目录并创建文件**
+```bash
+user@home$ mkdir ws        # 创建 "ws" 目录
+user@home$ cd ws          # 进入 "ws" 目录
+user@home/ws$ touch file.txt  # 创建 "file.txt" 文件
+```
+👉 **CLI 方式：**
+- 使用 **`mkdir`** 命令创建目录
+- 使用 **`cd`** 命令进入目录
+- 使用 **`touch`** 命令创建文件
+
+---
+
+## **3. 什么是 GUI（图形用户界面）？**
+📌 **"Provides WIMP graphical components to users to interact with Kernel and access/use resources."**  
+👉 GUI 提供 **WIMP 组件**，即：
+- **Windows（窗口）** → 通过 **屏幕窗口** 进行交互
+- **Icons（图标）** → 点击**图标**执行操作
+- **Menu（菜单）** → 选择菜单项
+- **Pointer（指针）** → 使用**鼠标**操作
+
+✅ **特点：**
+- **更易上手**，适合普通用户，如办公人员和设计师。
+- 使用**鼠标、窗口、按钮**进行操作，不需要输入命令。
+- **操作速度较慢**，但更直观。
+- 主要用于 **Windows、macOS、Linux 桌面环境（GNOME、KDE）**。
+
+---
+
+### **🔹 GUI 示例**
+📌 **在 GUI 中完成相同的操作**
+1. 右键点击桌面或文件管理器
+2. 选择 **“新建文件夹”**，命名为 `ws`
+3. 进入 `ws` 文件夹
+4. 右键选择 **“新建文本文件”**，命名为 `file.txt`
+
+👉 **GUI 方式：**
+- 通过 **鼠标操作**，而不是输入命令。
+
+---
+
+## **4. CLI vs GUI 对比总结**
+| 特性 | CLI（命令行界面） | GUI（图形用户界面） |
+|------|------------------|------------------|
+| **用户类型** | 高级用户、开发者、系统管理员 | 普通用户、办公人员 |
+| **操作方式** | 通过输入命令行指令 | 通过鼠标点击和窗口操作 |
+| **学习难度** | 需要记忆命令，学习成本高 | 直观易用，学习成本低 |
+| **执行速度** | 快，适用于自动化 | 较慢，适合交互式操作 |
+| **适用场景** | 服务器管理、编程、脚本执行 | 个人办公、设计、娱乐 |
+
+---
+
+## **5. 总结**
+- **CLI 通过命令行交互，适合专业用户，执行速度快，适用于自动化任务。**
+- **GUI 通过图形界面交互，适合普通用户，操作直观，但执行效率较低。**
+- **CLI 更强大，适用于高级任务，如服务器管理和批量处理，而 GUI 更适合日常办公和浏览。**
+- **现代操作系统通常同时提供 CLI 和 GUI**（如 Linux 既有终端 CLI 也有桌面 GUI）。
+
+🔹 **如果你需要高效处理任务、远程管理服务器或进行自动化，CLI 是更好的选择。**
+🔹 **如果你需要日常办公、网页浏览、图片处理，GUI 更直观和方便。**
+
+## **22**
+这张幻灯片的标题是 **“CLI Scripting”**（命令行脚本编写），它展示了 **逐条执行 CLI 命令** 和 **将多个 CLI 命令写入脚本执行** 之间的区别。以下是详细解析：
+
+---
+
+## **1. CLI 脚本编写的概念**
+📌 **CLI（命令行界面）允许用户执行单个命令，也可以使用脚本自动化多个命令的执行。**  
+📌 **手动输入命令 vs. 使用脚本执行多个命令**
+- **逐条执行命令** → 用户需要手动输入每个命令。
+- **使用脚本执行命令** → 将多个命令存入 `.sh` 脚本文件，并一键运行。
+
+---
+
+## **2. 逐条执行 CLI 命令**
+📌 **手动执行多个命令（One by One Commands）**
+💡 **任务目标：**
+- 创建目录 `ws`
+- 进入目录 `ws`
+- 显示当前工作目录
+- 创建 3 个文件：`file1`、`file2`、`file3`
+- 列出目录内容
+- 打印“Welcome 用户名”
+
+💻 **执行的 CLI 命令：**
+```bash
+user@home$ mkdir ws        # 创建 "ws" 目录
+user@home$ cd ws           # 进入 "ws" 目录
+user@home$ pwd             # 显示当前路径
+/home/user/ws
+user@home/ws$ touch file{1..3}  # 创建 file1, file2, file3
+user@home/ws$ ls           # 列出目录内容
+file1  file2  file3
+user@home/ws$ echo "Welcome `whoami`"
+Welcome user
+```
+
+✅ **问题：**
+- 用户需要**手动输入每个命令**，如果任务重复，则执行起来很麻烦。
+- **容易出错**，如果某条命令输错，需要重新输入。
+
+---
+
+## **3. 使用 Shell 脚本执行多个命令**
+📌 **自动执行命令（Grouped Commands in a Script）**
+💡 **改进方式：使用 Shell 脚本**：
+- 在 **nano 编辑器** 中创建一个 Shell 脚本
+- 将多个命令写入脚本
+- 赋予脚本执行权限
+- 运行脚本，一次性完成所有任务
+
+### **💻 编写脚本**
+1️⃣ **创建脚本文件**
+```bash
+nano script.sh
+```
+2️⃣ **写入以下内容**
+```bash
+#!/bin/bash
+mkdir ws
+cd ws
+pwd
+touch file{1..3}
+ls
+echo "Welcome `whoami`"
+```
+3️⃣ **保存并赋予执行权限**
+```bash
+chmod +x script.sh  # 让脚本变为可执行文件
+```
+4️⃣ **运行脚本**
+```bash
+./script.sh
+```
+
+✅ **优势：**
+- **自动化操作** → 只需运行一次脚本即可完成所有命令。
+- **减少手动输入** → 避免输入错误，提高效率。
+- **可重复使用** → 下次执行相同任务时，不需要重新输入命令。
+
+---
+
+## **4. 关键概念**
+📌 **脚本文件的扩展名** → Shell 脚本通常使用 `.sh` 结尾，如 `script.sh`。  
+📌 **脚本的第一行**（Shebang）→ `#!/bin/bash` 指定使用 **Bash 解释器** 运行脚本。  
+📌 **赋予执行权限** → `chmod +x script.sh` 允许脚本被执行。  
+
+---
+
+## **5. 总结**
+| **方式** | **特点** | **优缺点** |
+|----------|---------|------------|
+| **手动执行 CLI 命令** | 逐条输入命令 | 适合临时操作，但容易出错，重复任务时效率低 |
+| **使用 Shell 脚本** | 组合多个命令并自动执行 | 自动化操作，提高效率，可重复使用 |
+
+✅ **如果只执行一次，可以使用 CLI 命令；如果需要重复执行，建议编写 Shell 脚本。**  
+✅ **Shell 脚本是系统管理和任务自动化的强大工具！**
 
 
 ## **23**
@@ -644,4 +1091,250 @@ CLI 脚本是自动化任务的重要工具，不同的脚本语言适用于不�
 - **Python 和 Perl 适用于数据处理**
 - **R 适用于统计分析**
 
-你可以根据自己的需求选择合适的脚本语言来提高工作效率。如果你有更具体的应用场景，我可以帮你推荐适合的脚本语言！ 😊
+## **24**
+这张幻灯片的标题是 **“CLI Scripting”**（命令行脚本编写），它介绍了 **脚本语言的基本特性**。以下是详细解析：
+
+---
+
+## **1. 脚本语言的基本特性**
+脚本语言是一种 **轻量级、解释执行** 的编程语言，主要用于 **自动化任务、系统管理和批量处理**。  
+本幻灯片总结了脚本语言的 **三个关键特性**：
+
+---
+
+## **2. 脚本语言的三大特性**
+
+### **🔹 1. Untyped variables（无类型变量）**
+📌 **"Variables in a scripting language are used without a type declaration"**  
+👉 在脚本语言中，**变量不需要显式声明数据类型**，可以动态赋值并更改类型。
+
+✅ **示例**
+```bash
+name="Lucy"   # 变量 name 被解释为字符串（string）
+echo $name    # 输出 Lucy
+
+name=4        # 变量 name 现在被解释为整数（integer）
+echo $name    # 输出 4
+```
+✅ **特点**
+- **动态类型（Dynamic Typing）**：变量的类型可随赋值变化，不需要手动定义 `int`、`string` 等。
+- **适用于 Shell、Python、JavaScript 等脚本语言**。
+
+---
+
+### **🔹 2. Interpreted code（解释执行）**
+📌 **"Commands in a script are executed top to bottom"**  
+👉 **脚本按照从上到下的顺序执行**，即**逐行解释并执行**，不需要编译。
+
+✅ **示例**
+```bash
+echo "Step 1: Creating a directory"
+mkdir test_folder
+
+echo "Step 2: Moving into the directory"
+cd test_folder
+
+echo "Step 3: Creating a file"
+touch file.txt
+```
+✅ **特点**
+- **逐行执行（Line-by-Line Execution）** → 代码顺序很重要，**命令必须按照正确的逻辑顺序书写**。
+- **无需编译**，不像 C、Java 需要编译成可执行文件。
+
+---
+
+### **🔹 3. Simple and short（简单且简短）**
+📌 **"Scripts often are developed by a single user to complete a task"**  
+👉 脚本语言**简洁直观**，常用于**快速完成特定任务**。
+
+✅ **示例**
+💡 **自动上传网站文件到服务器**
+```bash
+#!/bin/bash
+scp -r /local/website user@server:/var/www/html/
+echo "Website uploaded successfully!"
+```
+✅ **特点**
+- **适用于个人任务、系统管理、自动化流程**。
+- **易于编写和调试**，比传统编程语言更直观。
+
+---
+
+## **3. 总结**
+| **特性** | **说明** | **示例** |
+|----------|---------|---------|
+| **无类型变量（Untyped Variables）** | 变量可动态赋值，无需声明类型 | `name="Lucy"` → string, `name=4` → integer |
+| **解释执行（Interpreted Code）** | 从上到下执行，不需要编译 | `echo "Hello"; mkdir test` |
+| **简单快捷（Simple and Short）** | 适合单人开发，用于自动化任务 | `scp file server:/path/` |
+
+✅ **脚本语言适用于系统管理、批量处理和自动化任务！**  
+✅ **无类型变量让编写代码更灵活，解释执行使得脚本开发更高效。**
+
+## **25**
+这张幻灯片的标题是 **“Basic Unix Commands”**（基本 Unix 命令），它介绍了 **Unix 命令如何通过 Shell 与操作系统内核（Kernel）交互并访问资源**。以下是详细解析：
+
+---
+
+## **1. Unix 命令的作用**
+📌 **Unix 命令是用户与操作系统交互的主要方式**，允许用户：
+- **管理文件和目录**
+- **查看和操作系统资源**
+- **执行进程和任务自动化**
+
+📌 **CLI（命令行界面）在 Unix 和 macOS 中是默认内置的**，而在 **Windows** 上可以使用 **Cygwin、GitBash** 等工具来模拟 Unix 终端环境。
+
+---
+
+## **2. Unix 命令的基本语法**
+📌 **Unix 命令的通用格式如下**：
+```bash
+command [option(s)] [argument(s)]
+```
+- **command** → 要执行的命令
+- **option(s)** → （可选）命令的选项，通常以 `-` 或 `--` 开头
+- **argument(s)** → （可选）命令的目标，如文件或目录
+
+✅ **示例**
+```bash
+ls -l /home
+```
+- `ls` → 列出文件
+- `-l` → 以详细格式显示
+- `/home` → 目标目录
+
+---
+
+## **3. 使用 Linux CLI**
+📌 **右侧黑色终端窗口展示了一组 Unix 命令的执行示例**
+```bash
+user@home$ mkdir ws        # 创建 "ws" 目录
+user@home$ cd ws           # 进入 "ws" 目录
+user@home$ pwd             # 显示当前路径
+/home/user/ws
+user@home/ws$ touch file{1..3}  # 创建 file1, file2, file3
+user@home/ws$ ls           # 列出目录内容
+file1  file2  file3
+user@home/ws$ echo "Welcome `whoami`"
+Welcome user
+```
+✅ **执行的任务**
+- `mkdir ws` → **创建 ws 目录**
+- `cd ws` → **进入 ws 目录**
+- `pwd` → **显示当前路径**
+- `touch file{1..3}` → **创建 3 个文件：file1, file2, file3**
+- `ls` → **列出当前目录的文件**
+- `echo "Welcome \`whoami\`"` → **打印当前用户**
+
+---
+
+## **4. 常见 Unix 命令**
+📌 **Unix 系统提供了大量命令**，例如：
+| 命令 | 作用 |
+|------|------|
+| `man` | 查看命令的帮助文档 |
+| `mkdir` | 创建目录 |
+| `rmdir` | 删除空目录 |
+| `cd` | 切换目录 |
+| `ls` | 列出目录内容 |
+| `touch` | 创建空文件 |
+| `cp` | 复制文件或目录 |
+| `mv` | 移动/重命名文件或目录 |
+| `rm` | 删除文件或目录 |
+| `echo` | 在终端打印文本 |
+| `whoami` | 显示当前用户 |
+
+✅ **示例**
+```bash
+cp file1.txt /home/user/documents/  # 复制文件到 documents 目录
+mv oldname.txt newname.txt          # 重命名文件
+rm -rf my_folder                    # 递归删除 my_folder 及其内容
+```
+
+---
+
+## **5. 总结**
+- **Unix 命令是与操作系统交互的核心工具**，通过 CLI 访问内核资源。
+- **基本语法**：`command [option(s)] [argument(s)]`，如 `ls -l /home`。
+- **CLI 适用于系统管理、文件操作、自动化任务**，比 GUI 更高效。
+- **Unix 命令广泛用于 Linux 和 macOS，Windows 也可使用 GitBash 或 Cygwin 运行 Unix 命令**。
+
+🔹 **学习 Unix 命令能帮助你更高效地管理系统，提升自动化能力！**  
+
+## **26**
+这张幻灯片的标题是 **“Basic Unix Commands”**（基本 Unix 命令），它介绍了 **man 命令**（Manual Pages），用于查看 Unix/Linux 命令的手册（帮助文档）。以下是详细解析：
+
+---
+
+## **1. 什么是 `man` 命令？**
+📌 **`man` 命令用于显示 Unix/Linux 命令的手册页（manual pages）。**  
+📌 **它提供了详细的命令说明，包括用途、语法、选项等。**
+
+✅ **语法：**
+```bash
+man [command]
+```
+✅ **示例：**
+```bash
+man pwd   # 查看 pwd 命令的手册
+```
+👉 运行 `man pwd` 后，将打开 `pwd` 命令的详细文档。
+
+---
+
+## **2. `man` 命令的使用**
+📌 **手册页通常包含以下部分：**
+- **NAME** → 命令名称及简要说明
+- **SYNOPSIS** → 语法格式
+- **DESCRIPTION** → 详细描述
+- **OPTIONS** → 可用选项
+- **EXAMPLES** → 使用示例
+- **AUTHOR** → 作者信息
+- **REPORTING BUGS** → Bug 报告地址
+
+🔹 **示例**：
+```bash
+NAME
+       pwd - print name of current/working directory
+
+SYNOPSIS
+       pwd [OPTION]...
+
+DESCRIPTION
+       Print the full filename of the current working directory.
+       -L, --logical  use PWD from environment, even if it contains symlinks
+       -P, --physical avoid all symlinks
+       --help         display this help and exit
+       --version      output version information and exit
+```
+
+---
+
+## **3. 在 `man` 页面中导航**
+📌 **手册页面是类似 `less` 的界面，可以使用以下按键进行导航：**
+
+| **操作** | **命令** |
+|----------|----------|
+| **搜索文本** | `/text` |
+| **向后滚动** | `b` |
+| **向前滚动** | `f` |
+| **跳到下一页** | `p` |
+| **退出手册页** | `q` |
+
+✅ **示例**
+```bash
+man ls   # 查看 ls 命令的手册
+man -k directory   # 搜索包含 "directory" 相关的命令
+```
+
+---
+
+## **4. 总结**
+- **`man` 命令用于查看 Unix/Linux 命令的帮助文档**，提供命令的详细信息。
+- **手册页结构包含名称、用法、描述、选项等**，可以使用 `/` 搜索内容。
+- **使用 `q` 退出手册，`b`/`f` 滚动页面，`p` 跳转到下一页。**
+- **是 Unix/Linux 用户了解命令的最佳方式！**
+
+🔹 **掌握 `man` 命令，能帮助你更高效地学习和使用 Unix/Linux 命令！**
+
+
+
